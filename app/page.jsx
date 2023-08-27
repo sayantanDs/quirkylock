@@ -66,6 +66,7 @@ export default function Home(){
 
 
     return (
+        <>
         <div className={styles.container}>
             
             <div className={styles.title}>
@@ -107,5 +108,13 @@ export default function Home(){
             })}
 
         </div>
+        <footer className={styles.footer}>
+          <small>
+            This site is heavily inspired by&nbsp;
+            <a href="https://neal.fun/password-game/" target="_blank">The Password Game</a> by&nbsp;
+            <a href="https://twitter.com/nealagarwal" target="_blank">Neal</a>
+          </small>
+        </footer>
+        </>
       )
 }

@@ -3,7 +3,14 @@
     max-width: calc(100% - 20px);
     margin: 0 auto;
     color: #4e4e4e;
+    min-height: calc(100vh - 50px);
 }
+
+.footer{
+    width: 100%;
+    color: #151515;
+    text-align: center;
+  }
 
 .title{
     text-align: center;
