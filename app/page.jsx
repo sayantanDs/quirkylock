@@ -92,14 +92,18 @@ export default function Home(){
             {/* <div>level: {max_unlocked_rules.current}</div> */}
             
             {rules.filter(r => r.unlocked).filter(r => !r.correct).reverse().map(r => {
-                <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct}>
-                    {r.children}
-                </RuleBox>
+                return (
+                    <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct}>
+                        {r.children}
+                    </RuleBox>
+                )
             })}
             {rules.filter(r => r.unlocked).filter(r =>  r.correct).reverse().map(r => {
-                <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct}>
-                    {r.children}
-                </RuleBox>
+                return(
+                    <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct}>
+                        {r.children}
+                    </RuleBox>
+                )
             })}
 
         </div>
