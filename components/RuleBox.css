@@ -1,0 +1,42 @@
+.rulebox {
+    border-radius: 10px;
+    text-align: left;
+    font-size: 16px;
+    margin: 22px auto;
+    overflow: hidden
+}
+
+.rulebox-top {
+    padding: 8px 16px 5px 16px;
+}
+
+.rulebox-desc {
+    padding: 11px 17px 15px 11px;
+}
+
+.rulebox.rule-err {
+    background-color: #fbe0e0;
+    border: 1px solid #fcc4c4;
+    box-shadow: 1px 1px 8px 1px #f1d1d1;
+}
+.rulebox.rule-err:hover {
+    box-shadow: 1px 2px 10px 1px #e3c5c5;
+}
+.rulebox-top.rule-err {
+    background-color: #f9c8c8;
+    color: #bb030c;
+}
+
+
+.rulebox.rule-correct {
+    background-color: #ecf7d9;
+    border: 1px solid #c5df99;
+    box-shadow: 1px 1px 8px 1px #dee9cb;
+}
+.rulebox.rule-correct:hover {
+    box-shadow: 1px 2px 10px 1px #d0dabe;
+}
+.rulebox-top.rule-correct {
+    background-color: #daf3af;
+    color: #227700;
+}
