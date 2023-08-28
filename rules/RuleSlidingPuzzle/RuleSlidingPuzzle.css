@@ -6,6 +6,8 @@
     display: grid;
     grid-template-columns: repeat(3, 64px);
     gap: 3px;
+    justify-content: center;
+    padding-top: 10px;
 }
 
 .puzzle_piece{
@@ -23,6 +25,6 @@
     position: absolute;
     top: 2px;
     left: 2px;
-    background-color: rgba(253, 249, 127, 0.63);
+    background-color: rgba(255, 250, 91, 0.63);
     padding: 1px 4px 1px 4px;
 }
