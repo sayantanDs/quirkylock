@@ -1,30 +1,39 @@
-.puzzle_canvas{
-    border: 1px solid #000000;
-}
-
 .sliding_puzzle{
     display: grid;
-    grid-template-columns: repeat(3, 64px);
-    gap: 3px;
+    grid-template-columns: repeat(3, 62px);
+    gap: 5px;
     justify-content: center;
     padding-top: 10px;
 }
 
 .puzzle_piece{
-    border-style: outset;
-    border: 2px solid #5b5b5b;
-    
+    /* border: 2px solid #6f6f6f; */
+    border: 1px solid #bebebe;
+    width: 62px;
+    height: 62px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.puzzle_piece:hover{
+    box-shadow: rgba(0, 0, 0, 0.28) 1px 4px 6px;
+}
+.puzzle_piece.blank_piece{
+    box-shadow: none;
+    border: none;
 }
 
 .puzzle_piece_wrapper{
     position: relative;
+    box-sizing: border-box;
+    width: 62px;
+    height: 62px;
+    
 }
 
 .puzzle_piece_num{
     font-size: 14px;
     position: absolute;
-    top: 2px;
-    left: 2px;
+    top: 1px;
+    left: 1px;
     background-color: rgba(255, 250, 91, 0.63);
     padding: 1px 4px 1px 4px;
 }

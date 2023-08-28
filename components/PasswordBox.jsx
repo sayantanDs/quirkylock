@@ -17,8 +17,8 @@ function PasswordBox({pswd, setPswd}) {
             </div>
             <div 
                 className="pswdbox" 
-                contentEditable 
-                spellCheck="false" 
+                contentEditable="plaintext-only"
+                spellCheck="false"
                 onInput={handleChange}
             />
             

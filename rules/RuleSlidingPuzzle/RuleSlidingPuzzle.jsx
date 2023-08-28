@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Rule from "../Rule";
 import "./RuleSlidingPuzzle.css";
 
-import {getRandomWord, getPuzzle} from "./utils";
+import {getRandomWord, getPuzzle, BLANK_CELL_NUM} from "./utils";
 
 
 
@@ -29,12 +29,9 @@ function SlidingPuzzle({word}){
 
     const [puzzleGrid, setPuzzleGrid] = useState(null);
 
-
-    const BLANK_CELL_NUM = 8;
-
     function createWordImage(){
         const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', {willReadFrequently: true});
 
         ctx.fillStyle = "#fff";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -74,7 +71,7 @@ function SlidingPuzzle({word}){
         let puzzle = getPuzzle();
         setPuzzleGrid(puzzle);
 
-    }, []);
+    }, [word]);
 
 
     function onClick(i, j){
@@ -127,7 +124,7 @@ function SlidingPuzzle({word}){
                                     {/* <span className='puzzle_piece_num'>{piece+1}</span> */}
                                     <div 
                                         style={{width: 60, height: 60}}
-                                        className='puzzle_piece'
+                                        className='puzzle_piece blank_piece'
                                     />
                                 </div> 
                             )
@@ -136,7 +133,7 @@ function SlidingPuzzle({word}){
                             return (
                                 <div className='puzzle_piece_wrapper' key={`${i},${j}`}>
                                     <span className='puzzle_piece_num'>{piece+1}</span>
-                                    <img                                         
+                                    <Image                                         
                                         className='puzzle_piece'                                        
                                         src={cropedImages.current[piece]} 
                                         width={60} 

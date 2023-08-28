@@ -1,3 +1,4 @@
+const BLANK_CELL_NUM = 8;
 
 function getRandomWord(){
     let arr = ['act', 'add', 'age', 'ago', 'aid', 'aim', 'air', 'all', 'and', 'any', 'arm', 'art', 'ask', 'bad', 'bag', 'ban', 'bar', 'bed', 'bet', 'big', 'bit', 'box', 'boy', 'bus', 'but', 'buy', 'can', 'cap', 'car', 'cat', 'CEO', 'cop', 'cow', 'cry', 'cup', 'cut', 'dad', 'day', 'die', 'dig', 'DNA', 'dog', 'dry', 'due', 'ear', 'eat', 'egg', 'end', 'era', 'etc', 'eye', 'fan', 'far', 'fat', 'fee', 'few', 'fit', 'fix', 'fly', 'for', 'fun', 'gap', 'gas', 'gay', 'get', 'God', 'gun', 'guy', 'hat', 'her', 'hey', 'him', 'hip', 'his', 'hit', 'hot', 'how', 'ice', 'ill', 'its', 'jet', 'Jew', 'job', 'joy', 'key', 'kid', 'lab', 'lap', 'law', 'lay', 'leg', 'let', 'lie', 'lip', 'lot', 'low', 'mad', 'man', 'map', 'may', 'mix', 'mom', 'Mrs', 'net', 'new', 'nod', 'nor', 'not', 'now', "n't", 'nut', 'odd', 'off', 'oil', 'old', 'one', 'our', 'out', 'owe', 'own', 'pan', 'pay', 'per', 'pet', 'pie', 'pop', 'pot', 'put', 'raw', 'red', 'rid', 'row', 'rub', 'run', 'sad', 'say', 'sea', 'see', 'set', 'sex', 'she', 'sin', 'sir', 'sit', 'six', 'ski', 'sky', 'son', 'sue', 'sun', 'tap', 'tax', 'tea', 'ten', 'the', 'tie', 'tip', 'toe', 'too', 'top', 'toy', 'try', 'two', 'use', 'via', 'war', 'way', 'wet', 'who', 'why', 'win', 'yes', 'yet', 'you'];
@@ -32,7 +33,7 @@ function flattenArray(arr){
 };
   
 function getInversionsCount(arr){
-    arr = flattenArray(arr).filter(n => n !== 0);
+    arr = flattenArray(arr).filter(n => n !== BLANK_CELL_NUM);
   
     const inversions = [];
   
@@ -64,4 +65,4 @@ function getPuzzle(){
 };
 
 
-export {getRandomWord, getPuzzle}
+export {getRandomWord, getPuzzle, BLANK_CELL_NUM}

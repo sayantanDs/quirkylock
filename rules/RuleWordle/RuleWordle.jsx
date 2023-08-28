@@ -24,13 +24,21 @@ async function get_todays_wordle(){
 
 export default class RuleWordle extends Rule{
     constructor(){
-        super("Your password must contain today's Wordle answer.");
+        // super("Your password must contain today's Wordle answer.");
+        super("Your password must contain today's ");
 
         get_todays_wordle()
             .then(solution => this.solution = solution)
             .catch((error) => {
                 console.log(error)
             });
+
+        this.children = (
+            // <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Open Wordle &#x1f517;</a>
+            <span><a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Wordle</a> answer.</span>
+        
+        )
+
     }
 
     check(txt){
