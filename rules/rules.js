@@ -1,6 +1,7 @@
 import Rule from "./Rule";
 import RuleWordle from "./RuleWordle/RuleWordle";
 import RuleSlidingPuzzle from "./RuleSlidingPuzzle/RuleSlidingPuzzle";
+import RuleMorse from "./RuleMorse/RuleMorse";
 
 
 var rules = [
@@ -28,6 +29,7 @@ var rules = [
         "Your password must include a month of the year.",
         (t) => /(january|february|march|april|may|june|july|august|september|october|november|december)/i.test(t)
     ),
+    new RuleMorse(),
     new RuleSlidingPuzzle(),
     new RuleWordle(),
     
