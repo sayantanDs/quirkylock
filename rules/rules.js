@@ -34,4 +34,17 @@ var rules = [
     
 ];
 
+function sort_rules(a, b){
+    if(a.correct == b.correct){
+        return b.num - a.num;
+    }
+    else if(!a.correct && b.correct){
+        return -1;
+    }
+    else{
+        return 1;
+    }
+}
+
 export default rules;
+export {sort_rules};

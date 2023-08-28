@@ -9,7 +9,10 @@ import RuleBox from "../components/RuleBox";
 
 
 
-import rules from "../rules/rules";
+import rules, {sort_rules} from "../rules/rules";
+
+
+
 
 
 export default function Home(){
@@ -95,14 +98,7 @@ export default function Home(){
             <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} />
             <div>level: {max_unlocked_rules.current}</div>
             
-            {rules.filter(r => r.unlocked).filter(r => !r.correct).reverse().map(r => {
-                return (
-                    <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct}>
-                        {r.children}
-                    </RuleBox>
-                )
-            })}
-            {rules.filter(r => r.unlocked).filter(r =>  r.correct).reverse().map(r => {
+            {rules.filter(r => r.unlocked).sort(sort_rules).map(r => {
                 return(
                     <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct}>
                         {r.children}
