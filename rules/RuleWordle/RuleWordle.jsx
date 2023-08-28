@@ -1,4 +1,4 @@
-import Rule from "./Rule";
+import Rule from "../Rule";
 
 
 async function get_todays_wordle(){

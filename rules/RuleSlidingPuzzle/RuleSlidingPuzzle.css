@@ -1,0 +1,28 @@
+.puzzle_canvas{
+    border: 1px solid #000000;
+}
+
+.sliding_puzzle{
+    display: grid;
+    grid-template-columns: repeat(3, 64px);
+    gap: 3px;
+}
+
+.puzzle_piece{
+    border-style: outset;
+    border: 2px solid #5b5b5b;
+    
+}
+
+.puzzle_piece_wrapper{
+    position: relative;
+}
+
+.puzzle_piece_num{
+    font-size: 14px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: rgba(253, 249, 127, 0.63);
+    padding: 1px 4px 1px 4px;
+}

@@ -7,6 +7,8 @@ import styles from './page.module.css'
 import PasswordBox from "../components/PasswordBox";
 import RuleBox from "../components/RuleBox";
 
+
+
 import rules from "../rules/rules";
 
 
@@ -20,6 +22,7 @@ export default function Home(){
         for (let i = 0; i < rules.length; i++) {
             rules[i].num = i + 1;
         }
+        max_unlocked_rules.current = 0;
     }, []);
 
 
@@ -90,7 +93,7 @@ export default function Home(){
             </p>
             
             <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} />
-            {/* <div>level: {max_unlocked_rules.current}</div> */}
+            <div>level: {max_unlocked_rules.current}</div>
             
             {rules.filter(r => r.unlocked).filter(r => !r.correct).reverse().map(r => {
                 return (
