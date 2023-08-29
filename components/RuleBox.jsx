@@ -1,16 +1,12 @@
 import React from 'react';
 import "./RuleBox.css";
 
-function RuleBox({heading, msg, correct, children, specialPowers}) {
-    // https://medium.com/@justynazet/passing-props-to-props-children-using-react-cloneelement-and-render-props-pattern-896da70b24f6
-    // https://react.dev/reference/react/cloneElement
+function RuleBox({heading, msg, correct, renderItem, propsToChild}) {
     
-    // pass specialPowers prop to children
-    const childrenWithProps = React.Children.map(children, (child, i) => {
-        return React.cloneElement(child, {correct, specialPowers});
-    })
-    
-    
+    // Using renderItem prop to render child component so that we can pass props to them
+    // the props coming from parent, that are to be passed to the child component are in 'propsToChild'
+    // this pattern is discussed in: https://react.dev/reference/react/cloneElement#alternatives
+
     return ( 
         <div className={`rulebox ${correct? "rule-correct": "rule-err" }`}>
             <div className={`rulebox-top ${correct? "rule-correct": "rule-err" }`}>
@@ -18,7 +14,7 @@ function RuleBox({heading, msg, correct, children, specialPowers}) {
             </div>
             <div className="rulebox-desc">
                 {msg}
-                {childrenWithProps}
+                {renderItem===undefined? null: renderItem(propsToChild)}
             </div>
         </div> 
     );

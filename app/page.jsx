@@ -30,11 +30,6 @@ export default function Home(){
     }, []);
 
 
-    // programatically change the password box input
-    function modifyPassword(txt) {
-        document.getElementById("pswdbox").textContent = txt;
-        setPswdAndCheckRules(txt);
-    }
 
     // callback on textbox change, check rules along with setPswd
     function setPswdAndCheckRules(txt){
@@ -80,7 +75,6 @@ export default function Home(){
         }
     }
 
-    const specialPowers = {modifyPassword, shakePasswordBox};
 
     return (
         <>
@@ -110,9 +104,14 @@ export default function Home(){
             <div>level: {max_unlocked_rules.current}</div>
             {rules.filter(r => r.unlocked).sort(sort_rules).map(r => {
                 return(
-                    <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct} specialPowers={specialPowers}>
-                        {r.children}
-                    </RuleBox>
+                    <RuleBox 
+                        key={r.num} 
+                        heading={`Rule ${r.num}`} 
+                        msg={r.msg} 
+                        correct={r.correct} 
+                        renderItem={r.renderItem}
+                        propsToChild={{pswd, setPswd: setPswdAndCheckRules, shakePasswordBox, correct: r.correct}}
+                    />
                 )
             })}
 

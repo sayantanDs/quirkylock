@@ -33,11 +33,7 @@ export default class RuleWordle extends Rule{
                 console.log(error)
             });
 
-        this.children = (
-            // <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Open Wordle &#x1f517;</a>
-            <span><a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Wordle</a> answer.</span>
-        
-        )
+        this.renderItem = () => <span><a href="https://www.nytimes.com/games/wordle/index.html" target="_blank">Wordle</a> answer.</span>
 
     }
 
