@@ -16,7 +16,7 @@ export default class RuleSlidingPuzzle extends Rule{
     }
 
     check(txt){
-        let r = new RegExp(`(${this.word})`, "i");
+        let r = new RegExp(`${this.word}`, "i");
         return r.test(txt); 
     }
 }

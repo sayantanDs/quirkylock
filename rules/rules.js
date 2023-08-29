@@ -8,7 +8,7 @@ var rules = [
     new Rule( 
         "Your password must be at least 8 characters.",
         (t) => t?.length >= 8
-    ),    
+    ), 
     new Rule( 
         "Your password must include a number.",
         (t) => /\d/.test(t)
@@ -27,7 +27,7 @@ var rules = [
     ),
     new Rule( 
         "Your password must include a month of the year.",
-        (t) => /(january|february|march|april|may|june|july|august|september|october|november|december)/i.test(t)
+        (t) => /january|february|march|april|may|june|july|august|september|october|november|december/i.test(t)
     ),
     new RuleMorse(),
     new RuleSlidingPuzzle(),

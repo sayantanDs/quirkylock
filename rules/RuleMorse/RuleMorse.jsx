@@ -8,7 +8,7 @@ const morse = {
 
 export default class RuleMorse extends Rule{
     constructor(){
-        super("Your password must contain Morse code of the first 3 english alphabets in your password.");
+        super("Your password must contain the Morse code of the first 3 english alphabets in your password. (Use . and -)");
     }
 
     check(txt){
@@ -17,7 +17,12 @@ export default class RuleMorse extends Rule{
         let code_nospace = code.replaceAll(" ", "");
         console.log(code_nospace)
 
-        let r = new RegExp(`(${code})|(${code_nospace})`);
+        // let exp = `(?:${code})|(?:${code_nospace})`;
+        let exp = `${code}`;
+        console.log(exp);
+        exp.replaceAll(".", "\\.");
+        console.log(exp);
+        let r = new RegExp(exp);
         return r.test(txt);
     }
 }
