@@ -18,6 +18,7 @@ import rules, {sort_rules} from "../rules/rules";
 export default function Home(){
     const [pswd, setPswd] = useState("");
     const max_unlocked_rules = useRef(0);
+    const pswdBoxRef = useRef(null);
 
 
     // initialization rule numbers
@@ -30,7 +31,7 @@ export default function Home(){
 
 
     // programatically change the password box input
-    function updatePswd(txt) {
+    function modifyPassword(txt) {
         document.getElementById("pswdbox").textContent = txt;
         setPswdAndCheckRules(txt);
     }
@@ -70,6 +71,16 @@ export default function Home(){
         }
     }
 
+    function shakePasswordBox(boolean){
+        if(boolean){
+            pswdBoxRef.current.classList.add("shake");
+        }
+        else{
+            pswdBoxRef.current.classList.remove("shake");
+        }
+    }
+
+    const specialPowers = {modifyPassword, shakePasswordBox};
 
     return (
         <>
@@ -95,12 +106,11 @@ export default function Home(){
                 Can you piece together a passphrase that adheres to all the requirements?
             </p>
             
-            <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} />
+            <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} ref={pswdBoxRef}/>
             <div>level: {max_unlocked_rules.current}</div>
-            
             {rules.filter(r => r.unlocked).sort(sort_rules).map(r => {
                 return(
-                    <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct}>
+                    <RuleBox key={r.num} heading={`Rule ${r.num}`} msg={r.msg} correct={r.correct} specialPowers={specialPowers}>
                         {r.children}
                     </RuleBox>
                 )

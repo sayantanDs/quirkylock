@@ -1,8 +1,10 @@
+
+import React from 'react';
 import "./PasswordBox.css";
 
 
-function PasswordBox({pswd, setPswd}) {
-
+function PasswordBox(props, ref) {
+    const {pswd, setPswd} = props;
     function handleChange(e){
         setPswd(e.currentTarget.textContent);
     }
@@ -20,10 +22,11 @@ function PasswordBox({pswd, setPswd}) {
                 contentEditable="plaintext-only"
                 spellCheck="false"
                 onInput={handleChange}
+                ref={ref}
             />
             
         </>
     );
 }
 
-export default PasswordBox;
+export default React.forwardRef(PasswordBox);

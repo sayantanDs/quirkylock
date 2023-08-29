@@ -3,12 +3,24 @@ import RuleWordle from "./RuleWordle/RuleWordle";
 import RuleSlidingPuzzle from "./RuleSlidingPuzzle/RuleSlidingPuzzle";
 import RuleMorse from "./RuleMorse/RuleMorse";
 
+class RuleShake extends Rule{
+    constructor(){
+        super("Oh no! there is an earthquake!");
+        const Btn = ({specialPowers}) => <button onClick={()=>specialPowers.shakePasswordBox(true)}>Shake</button>
+        this.children = <Btn/>
+    }
 
+    check(txt){
+        return /table/.test(txt);
+    }
+
+}
 var rules = [
     new Rule( 
         "Your password must be at least 8 characters.",
         (t) => t?.length >= 8
     ), 
+    new RuleShake(),
     new Rule( 
         "Your password must include a number.",
         (t) => /\d/.test(t)
