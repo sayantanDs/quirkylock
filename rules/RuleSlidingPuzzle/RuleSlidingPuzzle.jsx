@@ -9,7 +9,7 @@ import {getRandomWord, getPuzzle, BLANK_CELL_NUM} from "./utils";
 
 export default class RuleSlidingPuzzle extends Rule{
     constructor(){
-        super("Your password must contain the following word.");
+        super("Your password must contain the soltuion of this sliding puzzle.");
         this.word = getRandomWord();
         console.log("Puzzle word:", this.word);
         this.renderItem = () => <SlidingPuzzle word={this.word}/>;

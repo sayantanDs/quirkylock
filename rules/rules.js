@@ -2,8 +2,10 @@ import Rule from "./Rule";
 import RuleWordle from "./RuleWordle/RuleWordle";
 import RuleSlidingPuzzle from "./RuleSlidingPuzzle/RuleSlidingPuzzle";
 import RuleMorse from "./RuleMorse/RuleMorse";
-import RuleEarthquake from "./RuleEarthquake/RuleEarthquake";
 import RuleRiddle from "./RuleRiddle/RuleRiddle";
+import RuleLocation from "./RuleLocation/RuleLocation";
+import RuleTimeEmoji from "./RuleTimeEmoji/RuleTimeEmoji";
+import RuleQR from "./RuleQR/RuleQR";
 
 
 var rules = [
@@ -16,13 +18,13 @@ var rules = [
         (t) => (/[A-Z]/.test(t) && /[a-z]/.test(t))
     ),
     new Rule( 
-        "Your password must include a number.",
-        (t) => /\d/.test(t)
-    ), 
-    new Rule( 
         "Your password must include a special character.",
         (t) => /\W/.test(t)
     ),
+    new Rule( 
+        "Your password must include a negative number.",
+        (t) => /-\d/.test(t)
+    ),     
     new Rule( 
         "Your password must include the name of a continent.",
         (t) => /asia|america|europe|africa|australia|north america|south america|antartica/i.test(t)
@@ -35,13 +37,13 @@ var rules = [
         "Your password must contain the value of pi up to first 5 decimal places.",
         (t) => /(?:3\.14159)/.test(t)
     ),
-    
-    // new RuleMorse(),
-    new RuleSlidingPuzzle(),
+    new RuleTimeEmoji(),
+    new RuleMorse(),
+    new RuleQR(),
+    new RuleLocation(),
     new RuleRiddle(),
-    new RuleWordle(),
-    // new RuleEarthquake(),   
-    
+    new RuleSlidingPuzzle(),
+    new RuleWordle() 
 ];
 
 function sort_rules(a, b){

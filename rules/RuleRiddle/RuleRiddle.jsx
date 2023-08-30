@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Rule from "../Rule";
 import styles from "./RuleRiddle.module.css";
 
@@ -34,16 +33,8 @@ const riddles = [
 ]
 
 
-
-
-
-
-
-
-
 export default class RuleRiddle extends Rule{
     constructor(){
-        // super("Your password must contain today's Wordle answer.");
         super("Your password must contain the solution to the following riddle:");
 
         this.riddleNum = Math.floor(Math.random()*riddles.length);
@@ -57,9 +48,6 @@ export default class RuleRiddle extends Rule{
     }
 
     check = (txt) => {
-        if(this.riddleNum===null){
-            return false;
-        }
         let ans = riddles[this.riddleNum][1];
         let r = RegExp(`(?:${ans})`, "i");
         return r.test(txt);
@@ -78,7 +66,7 @@ function Riddle({riddleNum, regenerate, correct}){
                 {riddle}
             </div>
             <button className={styles.button} onClick={regenerate} hidden={correct}>
-                <img width="28" height="28" src="https://img.icons8.com/ios-glyphs/30/refresh--v1.png" alt="refresh--v1"/>
+                <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/refresh--v1.png" alt="refresh--v1"/>
             </button>
         </div>
     )
