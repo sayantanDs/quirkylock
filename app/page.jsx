@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 import styles from './page.module.css'
 import PasswordBox from "../components/PasswordBox";
 import RuleBox from "../components/RuleBox";
@@ -20,6 +22,8 @@ export default function Home(){
     const [ruleState, setRuleState] = useState([]);
     const max_unlocked_rules = useRef(0);
     const pswdBoxRef = useRef(null);
+    const [aaParent, aaEnableAnimations] = useAutoAnimate();
+
 
 
     // initialization rule numbers
@@ -121,18 +125,20 @@ export default function Home(){
             
             <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} ref={pswdBoxRef}/>
             <div>level: {max_unlocked_rules.current}</div>
-            {ruleState.filter(r => r.unlocked).sort(sort_rules).map(r => {
-                return(
-                    <RuleBox 
-                        key={r.num} 
-                        heading={`Rule ${r.num}`} 
-                        msg={r.msg} 
-                        correct={r.correct} 
-                        renderItem={r.renderItem}
-                        propsToChild={{pswd, setPswd: setPswdAndCheckRules, shakePasswordBox, regenerateRule, correct: r.correct}}
-                    />
-                )
-            })}
+            <div ref={aaParent}>            
+                {ruleState.filter(r => r.unlocked).sort(sort_rules).map(r => {
+                    return(
+                        <RuleBox 
+                            key={r.num} 
+                            heading={`Rule ${r.num}`} 
+                            msg={r.msg} 
+                            correct={r.correct} 
+                            renderItem={r.renderItem}
+                            propsToChild={{pswd, setPswd: setPswdAndCheckRules, shakePasswordBox, regenerateRule, correct: r.correct}}
+                        />
+                    )
+                })}
+            </div>
 
         </div>
         <footer className={styles.footer}>

@@ -116,12 +116,15 @@ export default class RuleLocation extends Rule{
         super("Your password must contain the name of the country at this latitude and longitude.");
         this.keys = Object.keys(locations);
         this.locationName = this.keys[Math.floor(Math.random()*this.keys.length)];
+        console.log("Country:", this.locationName);
+
         this.renderItem = ({regenerateRule, correct}) => <Location locationName={this.locationName} regenerate={()=>regenerateRule(this.num)} correct={correct}/>
         // this.num is the rule number that is dynamically set later
     }
 
     regenerate(){
         this.locationName = this.keys[Math.floor(Math.random()*this.keys.length)];
+        console.log("Country:", this.locationName);
     }
 
     check = (txt) => {
@@ -135,7 +138,7 @@ function Location({locationName, regenerate, correct}){
     const latitude = locations[locationName][0];
     const longitude = locations[locationName][1];
 
-    console.log("Country:", locationName);
+    
 
     return (
         <div className={styles.location_wrapper}>

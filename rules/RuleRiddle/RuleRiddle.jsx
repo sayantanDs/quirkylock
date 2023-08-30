@@ -38,6 +38,7 @@ export default class RuleRiddle extends Rule{
         super("Your password must contain the solution to the following riddle:");
 
         this.riddleNum = Math.floor(Math.random()*riddles.length);
+        console.log("Riddle:", riddles[this.riddleNum][1]);
         this.renderItem = ({regenerateRule, correct}) => <Riddle riddleNum={this.riddleNum} regenerate={()=>regenerateRule(this.num)} correct={correct}/>
         // this.num is the rule number that is dynamically set later
         
@@ -45,6 +46,7 @@ export default class RuleRiddle extends Rule{
 
     regenerate(){
         this.riddleNum = Math.floor(Math.random()*riddles.length);
+        console.log("Riddle:", riddles[this.riddleNum][1]);
     }
 
     check = (txt) => {
@@ -57,8 +59,6 @@ export default class RuleRiddle extends Rule{
 function Riddle({riddleNum, regenerate, correct}){
     const riddle = riddles[riddleNum][0];
     const answer = riddles[riddleNum][1];
-
-    console.log("Riddle:", answer);
 
     return (
         <div className={styles.riddle_wrapper}>

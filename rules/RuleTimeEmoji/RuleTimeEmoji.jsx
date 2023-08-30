@@ -11,6 +11,9 @@ function getCurrentNearestHalfHour(){
     else if(m>=15){
         m=30
     }
+    else{
+        m=0;
+    }
 
     return `${('00'+h).slice(-2)}:${('00'+m).slice(-2)}`;
 }
