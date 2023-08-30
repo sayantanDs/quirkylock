@@ -9,7 +9,7 @@ import RuleBox from "../components/RuleBox";
 
 
 
-import rules, {sort_rules} from "../rules/rules";
+import ruleList, {sort_rules} from "../rules/rules";
 
 
 
@@ -17,16 +17,21 @@ import rules, {sort_rules} from "../rules/rules";
 
 export default function Home(){
     const [pswd, setPswd] = useState("");
+    const [ruleState, setRuleState] = useState([]);
     const max_unlocked_rules = useRef(0);
     const pswdBoxRef = useRef(null);
 
 
     // initialization rule numbers
     useEffect(() => {
-        for (let i = 0; i < rules.length; i++) {
-            rules[i].num = i + 1;
+
+        for (let i = 0; i < ruleList.length; i++) {
+            ruleList[i].num = i + 1;
         }
         max_unlocked_rules.current = 0;
+
+        setRuleState(ruleList);
+
     }, []);
 
 
@@ -40,6 +45,8 @@ export default function Home(){
     
     //check rules loop
     function checkRules(txt) {
+        let rules = [...ruleState];
+
         //base case, first rule
         if(!rules[0].unlocked && txt.length > 0){
             rules[0].unlocked = true;
@@ -64,6 +71,8 @@ export default function Home(){
                 solved_count++;
             }
         }
+
+        setRuleState(rules);
     }
 
     function shakePasswordBox(boolean){
@@ -75,6 +84,16 @@ export default function Home(){
         }
     }
 
+    function regenerateRule(num){
+        console.log("regenerate", num);
+        num--; //change to rule index
+        let rules = [...ruleState];
+        if("regenerate" in rules[num]){
+            rules[num].regenerate();
+            setRuleState(rules);
+        }
+
+    }
 
     return (
         <>
@@ -102,7 +121,7 @@ export default function Home(){
             
             <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} ref={pswdBoxRef}/>
             <div>level: {max_unlocked_rules.current}</div>
-            {rules.filter(r => r.unlocked).sort(sort_rules).map(r => {
+            {ruleState.filter(r => r.unlocked).sort(sort_rules).map(r => {
                 return(
                     <RuleBox 
                         key={r.num} 
@@ -110,7 +129,7 @@ export default function Home(){
                         msg={r.msg} 
                         correct={r.correct} 
                         renderItem={r.renderItem}
-                        propsToChild={{pswd, setPswd: setPswdAndCheckRules, shakePasswordBox, correct: r.correct}}
+                        propsToChild={{pswd, setPswd: setPswdAndCheckRules, shakePasswordBox, regenerateRule, correct: r.correct}}
                     />
                 )
             })}

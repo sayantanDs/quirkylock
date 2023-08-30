@@ -1,0 +1,26 @@
+.riddle_wrapper{
+    display: grid;
+    grid-template-columns: auto 50px;
+    align-items: center;
+    justify-content:space-between;
+    padding: 8px;
+    margin-top: 3px;
+    gap: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+}
+
+.button{
+    font-weight: bold;
+    border: 1px solid rgb(200, 200, 200);
+    background-color: rgb(252, 252, 252);;
+    border-radius: 8px;
+    padding: 5px 1px 1px 1px;
+}
+
+.button:hover{
+    background-color: rgb(255, 255, 255);
+}
+.button:hover:active{
+    background-color: rgb(240, 240, 240);
+}

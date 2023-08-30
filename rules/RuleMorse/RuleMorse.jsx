@@ -18,7 +18,7 @@ export default class RuleMorse extends Rule{
             let code = `${morse[letters[0].toLowerCase()]} ${morse[letters[1].toLowerCase()]} ${morse[letters[2].toLowerCase()]}`;
             
             let exp = `${code}`;
-            exp.replaceAll(".", "\\.");
+            exp = exp.replaceAll(".", "\\.");
             console.log("morse:", exp);
             let r = new RegExp(exp);
             return r.test(txt);
