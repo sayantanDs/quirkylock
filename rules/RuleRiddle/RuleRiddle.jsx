@@ -66,7 +66,15 @@ function Riddle({riddleNum, regenerate, correct}){
             <div className={styles.riddle}>
                 {riddle}
             </div>
-            <Image width="24" height="24" src="/reload.png" alt="reload" onClick={regenerate} className={styles.reload_button}/>
+            <Image 
+                width="24" 
+                height="24" 
+                src="/reload.png" 
+                alt="reload" 
+                onClick={regenerate} 
+                className={styles.reload_button}
+                hidden={correct}
+            />
         </div>
     )
 }
