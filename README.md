@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QuirkyLock Game
 
-## Getting Started
+Welcome to QuirkyLock! Get ready to create the most complicated password of your life. You must craft a password that adheres to a series of increasingly absurd rules. Enjoy a variety of mini-games that incorporate puzzles, and riddles to enhance the gameplay experience.
 
-First, run the development server:
+[Play QuirkyLock Now](https://quirkylock.netlify.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The idea for this game comes from [The Password Game](https://neal.fun/password-game/) made by [Neal](https://twitter.com/nealagarwal). Go check out the original if you haven't played it yet.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
+### Getting Started
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Clone this repository to your local machine using `git clone https://github.com/sayantanDs/quirkylock.git`.
+2. Navigate to the project directory using the command line: `cd quirkylock`.
+3. Install the required dependencies by running `npm install`.
+4. Start the development server with `npm run dev`.
+5. Open your web browser and go to `http://localhost:3000` to play the game.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+### Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! If you find a bug or have suggestions for improvements, please open an issue or create a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Acknowledgements
+- This game is heavily inspired by [The Password Game](https://neal.fun/password-game/) made by [Neal](https://twitter.com/nealagarwal)
+- This game was developed using the [Next.js](https://nextjs.org/) framework.
+- [Reload icon by mavadee](https://www.freepik.com/icon/reload_3580291#fromView=keyword&term=Refresh&page=1&position=15)

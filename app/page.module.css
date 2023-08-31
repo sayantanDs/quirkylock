@@ -2,27 +2,31 @@
     width: 576px;
     max-width: calc(100% - 20px);
     margin: 0 auto;
-    color: #4e4e4e;
+    padding: 5px;
     min-height: calc(100vh - 50px);
 }
 
 .footer{
+    font-size: 12px;
     width: 100%;
     color: #151515;
     text-align: center;
-  }
+    padding-bottom: 2px;
+}
 
 .title{
     text-align: center;
     display: grid;
     align-items: center;
-    grid-template-columns: 75px auto;
+    grid-template-columns: 60px auto;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 .title_text{
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
+    color: #533ea5;
 }
 .introduction{
     text-align: center;

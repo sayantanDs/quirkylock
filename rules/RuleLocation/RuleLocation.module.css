@@ -1,0 +1,22 @@
+.location_wrapper{
+    display: grid;
+    grid-template-columns: auto 50px;
+    align-items: center;
+    justify-content:space-between;
+    padding: 6px 6px 6px 12px;
+    margin-top: 8px;
+    gap: 5px;
+}
+.location{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.reload_button{
+    padding:3px;
+    margin-left: auto;
+}
+.reload_button:hover{
+    cursor: pointer;
+    transform: scale(1.08);
+}
