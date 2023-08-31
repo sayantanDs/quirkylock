@@ -23,7 +23,7 @@ export default function Home(){
     const max_unlocked_rules = useRef(0);
     const pswdBoxRef = useRef(null);
     const [aaParent, aaEnableAnimations] = useAutoAnimate();
-
+    const [allSolved, setAllSolved] = useState(false);
 
 
     // initialization rule numbers
@@ -77,6 +77,12 @@ export default function Home(){
         }
 
         setRuleState(rules);
+        if(solved_count===rules.length){
+            setAllSolved(true);
+        }
+        else{
+            setAllSolved(false);
+        }
     }
 
     function shakePasswordBox(boolean){
@@ -118,7 +124,12 @@ export default function Home(){
                         
             <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} ref={pswdBoxRef}/>
             <div>level: {max_unlocked_rules.current}</div>
-            <div ref={aaParent}>            
+            <div ref={aaParent}>
+                {allSolved && <RuleBox 
+                    heading={"Congratulations!"} 
+                    msg={"You have successfully created a password. \u{1F389}\u{1F389}"}
+                    correct={true}
+                />}        
                 {ruleState.filter(r => r.unlocked).sort(sort_rules).map(r => {
                     return(
                         <RuleBox 
@@ -130,7 +141,7 @@ export default function Home(){
                             propsToChild={{pswd, setPswd: setPswdAndCheckRules, shakePasswordBox, regenerateRule, correct: r.correct}}
                         />
                     )
-                })}
+                })}                
             </div>
 
         </div>
