@@ -146,11 +146,10 @@ export default function Home(){
 
         </div>
         <footer className={styles.footer}>
-          <small>
+            Check out the <a href="https://github.com/sayantanDs/quirkylock" target="_blank">GitHub</a> for this project. <br/>
             This site is heavily inspired by&nbsp;
             <a href="https://neal.fun/password-game/" target="_blank">The Password Game</a> by&nbsp;
             <a href="https://twitter.com/nealagarwal" target="_blank">Neal</a>
-          </small>
         </footer>
         </>
       )

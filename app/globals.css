@@ -4,7 +4,7 @@ body {
     font-family: 'Roboto Mono', 'Consolas', monospace, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
+    margin: 0;
     
     /* halftone */
     /* https://css-irl.info/css-halftone-patterns/ */
@@ -30,6 +30,7 @@ code {
 
 a{
     color: dodgerblue;
+    text-decoration: none;
 }
 
 
