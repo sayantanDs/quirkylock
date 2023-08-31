@@ -4,26 +4,15 @@
     align-items: center;
     justify-content:space-between;
     padding: 8px 8px 8px 15px;
-    margin-top: 3px;
+    margin-top: 8px;
     gap: 5px;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 8px;
 }
 
-.button{
-    border: 1px solid rgb(200, 200, 200);
-    background-color: rgb(252, 252, 252);;
-    border-radius: 6px;
-    padding: 5px 1px 1px 1px;
-    width: 35px;
-    height: 35px;
-    box-sizing: border-box;
+.reload_button{
+    padding:3px;
     margin-left: auto;
 }
-
-.button:hover{
-    background-color: rgb(255, 255, 255);
-}
-.button:hover:active{
-    background-color: rgb(240, 240, 240);
+.reload_button:hover{
+    cursor: pointer;
+    transform: scale(1.08);
 }

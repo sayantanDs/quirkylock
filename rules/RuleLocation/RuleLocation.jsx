@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from "./RuleLocation.module.css";
 import Rule from "../Rule";
 
@@ -145,9 +146,7 @@ function Location({locationName, regenerate, correct}){
             <div className={styles.location}>
                 {latitude}, {longitude}
             </div>
-            <button className={styles.button} onClick={regenerate} hidden={correct}>
-                <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/refresh--v1.png" alt="refresh--v1"/>
-            </button>
+            <Image width="24" height="24" src="/reload.png" alt="reload" onClick={regenerate} className={styles.reload_button}/>
         </div>
     )
 }

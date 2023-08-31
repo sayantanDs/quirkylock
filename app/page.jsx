@@ -105,9 +105,9 @@ export default function Home(){
             
             <div className={styles.title}>
                 <Image
-                    src="/quirkylock.png"
-                    width={70}
-                    height={70}
+                    src="/quirkylock_purple.png"
+                    width={55}
+                    height={55}
                     alt=""
                 />
                 <div className={styles.title_text}>                
@@ -115,14 +115,7 @@ export default function Home(){
                 </div>
             </div>
             
-            <p className={styles.introduction}>
-                <b>Hello adventurer!</b>
-                <br/>
-                The residents of &quot;Quirky Town&quot; are holding a unique competition.
-                Their chief  &quot;The RuleMaster&quot; has a knack for crafting passwords that defy convention.
-                Can you piece together a passphrase that adheres to all the requirements?
-            </p>
-            
+                        
             <PasswordBox pswd={pswd} setPswd={setPswdAndCheckRules} ref={pswdBoxRef}/>
             <div>level: {max_unlocked_rules.current}</div>
             <div ref={aaParent}>            

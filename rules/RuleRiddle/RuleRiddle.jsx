@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Rule from "../Rule";
 import styles from "./RuleRiddle.module.css";
 
@@ -65,9 +66,7 @@ function Riddle({riddleNum, regenerate, correct}){
             <div className={styles.riddle}>
                 {riddle}
             </div>
-            <button className={styles.button} onClick={regenerate} hidden={correct}>
-                <img width="24" height="24" src="https://img.icons8.com/ios-glyphs/30/refresh--v1.png" alt="refresh--v1"/>
-            </button>
+            <Image width="24" height="24" src="/reload.png" alt="reload" onClick={regenerate} className={styles.reload_button}/>
         </div>
     )
 }
