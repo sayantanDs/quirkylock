@@ -1,8 +1,10 @@
 # QuirkyLock Game
 
-Welcome to QuirkyLock! Get ready to create the most complicated password of your life. You must craft a password that adheres to a series of increasingly absurd rules. Enjoy a variety of mini-games that incorporate puzzles, and riddles to enhance the gameplay experience.
+Welcome to [QuirkyLock](https://quirkylock.netlify.app)! Get ready to create the most complicated password of your life. You must craft a password that adheres to a series of increasingly absurd rules. Enjoy a variety of mini-games that incorporate puzzles, and riddles to enhance the gameplay experience.
 
 [Play QuirkyLock Now](https://quirkylock.netlify.app)
+
+![quirkylock_ss](https://github.com/sayantanDs/quirkylock/assets/39154403/016dd33a-ca59-4bc7-a4d1-51bfade4d7ea)
 
 The idea for this game comes from [The Password Game](https://neal.fun/password-game/) made by [Neal](https://twitter.com/nealagarwal). Go check out the original if you haven't played it yet.
 
