@@ -41,16 +41,25 @@ function setCaret(el, offset) {
 
 function PasswordBox(props, ref) {
     const {pswd, setPswd} = props;
-    const caretPos = useRef();
+    // const caretPos = useRef();
 
+    // useEffect(() => {
+    //     // setCaret(ref.current, caretPos.current);
+    //     // ref.current.focus();
+    // }, [pswd]);
+
+
+    // https://saturncloud.io/blog/creating-a-textarea-with-autoresize/
     useEffect(() => {
-        setCaret(ref.current, caretPos.current);
-        // ref.current.focus();
-    }, [pswd]);
+        ref.current.style.height = 'auto';
+        ref.current.style.height = `${ref.current.scrollHeight}px`;
+    }, [pswd, ref]);
+
 
     function handleChange(e){
-        caretPos.current = getCaret(ref.current);
-        setPswd(e.currentTarget.textContent);
+        // caretPos.current = getCaret(ref.current);
+        // setPswd(e.currentTarget.textContent);
+        setPswd(e.target.value);
     }
 
     return ( 
@@ -61,17 +70,28 @@ function PasswordBox(props, ref) {
                     {pswd.length}
                 </span>
             </div>
-            <div 
+            {/* <div 
                 id="pswdbox"
                 className="pswdbox" 
-                contentEditable="plaintext-only"
+                // contentEditable="plaintext-only"
+                contentEditable={true}
                 suppressContentEditableWarning={true}
                 spellCheck="false"
                 onInput={handleChange}
                 ref={ref}
             >
                 {pswd}
-            </div>
+            </div> */}
+            <textarea 
+                id="pswdbox"
+                className="pswdbox"
+                ref={ref} 
+                value={pswd} 
+                onChange={handleChange} 
+                rows={1}
+                style={{resize: 'none', width: "100%", overflowY: 'hidden'}}
+            />
+            
             
         </>
     );
