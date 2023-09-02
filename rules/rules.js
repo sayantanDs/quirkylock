@@ -13,7 +13,7 @@ import RuleEarthquake from "./RuleEarthquake/RuleEarthquake";
 var rules = [
     new Rule( 
         "Your password must be at least 6 characters.",
-        (t) => t?.length >= 8
+        (t) => t?.length >= 6
     ),
     new Rule( 
         "Your password must include an uppercase and a lowercase letter.",
