@@ -65,7 +65,7 @@ function PasswordBox(props, ref) {
                 style={{resize: 'none', width: "100%", overflowY: 'hidden'}}
                 spellCheck="false"
             />
-            <div>{caretPos.current && `${caretPos.current.start}, ${caretPos.current.end}`}</div>
+            {/* <div>{caretPos.current && `${caretPos.current.start}, ${caretPos.current.end}`}</div> */}
         </>
     );
 }
