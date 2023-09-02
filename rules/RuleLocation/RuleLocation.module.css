@@ -11,12 +11,3 @@
     font-size: 17px;
     font-weight: bold;
 }
-
-.reload_button{
-    padding:3px;
-    margin-left: auto;
-}
-.reload_button:hover{
-    cursor: pointer;
-    transform: scale(1.08);
-}

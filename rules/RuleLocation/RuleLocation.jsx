@@ -1,6 +1,7 @@
-import Image from 'next/image';
+import { useRef } from 'react';
 import styles from "./RuleLocation.module.css";
 import Rule from "../Rule";
+import ReloadButton from '../../components/ReloadButton';
 
 
 const locations = {
@@ -102,11 +103,9 @@ const locations = {
     'Turkmenistan': [37.95, 58.3833],
     'Uganda': [0.3163, 32.5822],
     'Ukraine': [50.4454, 30.5186],
-    'UAE': [24.4648, 54.3618],
     'United Kingdom': [51.5085, -0.1257],
     'Uruguay': [-34.8335, -56.1674],
     'Uzbekistan': [41.2647, 69.2163],
-    'Venezuela (Bolivarian Republic of)': [10.488, -66.8792],
     'Yemen': [15.3531, 44.2078],
     'Zambia': [-15.4134, 28.2771],
     'Zimbabwe': [-17.8294, 31.0539]
@@ -138,22 +137,22 @@ export default class RuleLocation extends Rule{
 function Location({locationName, regenerate, correct}){
     const latitude = locations[locationName][0];
     const longitude = locations[locationName][1];
-
-    
+    const reloadsLeft = useRef(3);    
 
     return (
         <div className={styles.location_wrapper}>
             <div className={styles.location}>
                 {latitude}, {longitude}
             </div>
-            <Image 
-                width="24" 
-                height="24" 
-                src="/reload.png" 
-                alt="reload" 
-                onClick={regenerate} 
-                className={styles.reload_button}
-                hidden={correct}
+            <ReloadButton 
+                onClick={()=>{
+                    if(reloadsLeft.current>0){
+                        regenerate()
+                        reloadsLeft.current--; 
+                    }
+                }} 
+                hidden={correct} 
+                reloadsLeft={reloadsLeft.current}
             />
         </div>
     )

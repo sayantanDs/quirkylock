@@ -49,6 +49,8 @@ export default function Home(){
     
     //check rules loop
     function checkRules(txt) {
+        if(ruleState.length===0) return;
+
         let rules = [...ruleState];
 
         //base case, first rule

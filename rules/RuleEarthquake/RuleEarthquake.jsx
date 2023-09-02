@@ -3,7 +3,7 @@ import Rule from "../Rule";
 
 export default class RuleEarthquake extends Rule{
     constructor(){
-        super("Oh no! there is an earthquake! Put your password under a table \u{252C}\u{2500}\u{252C}");
+        super("Oh no! there is an earthquake! Get your password to safety! Add this chair to your password and put the rest of your password below it.");
         this.renderItem = ({pswd, setPswd, shakePasswordBox, correct}) => {
             return (
                 <Earthquake 
@@ -17,48 +17,21 @@ export default class RuleEarthquake extends Rule{
     }
 
     check(txt){
-        return /^\u{252C}\u{2500}\u{252C}\n/u.test(txt);
+        return /^[\u{1FA91}]+\n/u.test(txt); // check for chair unicode
     }
 
 }
 
-const upsideDownMap ={
-    a: "\u0250",
-    b: "q",
-    c: "\u0254",
-    d: "p",
-    e: "\u01DD",
-    f: "\u025F",
-    g: "\u0183",
-    h: "\u0265",
-    i: "\u1D09",
-    j: "\u027e",
-    k: "\u029e",
-    m: "\u026F",
-    n: "u",
-    p: "d",
-    q: "b",
-    r: "\u0279",
-    t: "\u0287",
-    u: "n",
-    v: "\u028C",
-    w: "\u028D",
-    y: "\u028E",
-}
-function flipAlphabet(c){
-    if(c in upsideDownMap){
-        return upsideDownMap[c];
-    }
-    return c;
-}
 
 function Earthquake({pswd, setPswd, shakePasswordBox, correct}){
     const solvedOnce = useRef(false);
     const timerRef = useRef(null);
-    const TIMEOUT = Math.floor(Math.random()*200) + 600;
+    const replaceCount = useRef(0);
 
+    
+    // start Earthquake
     useEffect(()=>{
-        timerRef.current = setTimeout(shuffleCharacters, TIMEOUT);
+        timerRef.current = setTimeout(shuffleCharacters, 1000);
 
         shakePasswordBox(true);
         solvedOnce.current = false;
@@ -67,15 +40,19 @@ function Earthquake({pswd, setPswd, shakePasswordBox, correct}){
         return () => clearTimeout(timerRef.current);
     }, []);
 
+    // continue Earthquake using timeout
     useEffect(()=>{
         if(!solvedOnce.current){
-            // console.log("pswd:", pswd);
             clearTimeout(timerRef.current);
-            timerRef.current = setTimeout(shuffleCharacters, TIMEOUT);
+            timerRef.current = setTimeout(
+                shuffleCharacters, 
+                replaceCount.current<8?1000:3000
+            );
         }
     }, [pswd]);
 
 
+    // stop Earthquake
     useEffect(()=>{
         if(!solvedOnce.current && correct){
             solvedOnce.current = true;
@@ -85,11 +62,27 @@ function Earthquake({pswd, setPswd, shakePasswordBox, correct}){
     }, [correct]);
 
     
+    
     function shuffleCharacters(){
-        if(pswd.length>4){
-            // setPswd(pswd.substr(0, 3) + pswd.substr(4) + flipAlphabet(pswd[3]) )
-            setPswd(pswd.substr(1) + flipAlphabet(pswd[0]) )
+        let matches = [...pswd.matchAll(/[!-~]/g)];
+        if(matches.length > 0){
+            let indices = matches.map(m => m.index);
+            let i = Math.floor(Math.random()*indices.length);
+            i = indices[i];
+
+            const arr = ["\u{1FAA8}", "\u{1FAA8}", "\u{1F342}", "\u{1F343}"];
+            const x = arr[Math.floor(Math.random()*arr.length)];
+
+            setPswd(pswd.substr(0,i) + x + pswd.substr(i+1)); // add rock or leaf unicode
+            replaceCount.current += 1;
         }
     }
+
+    
+    return (
+        <div style={{fontWeight: "bold", fontSize: "50px", textAlign:"center"}}>
+            {"\u{1FA91}"}
+        </div>
+    )
 
 }

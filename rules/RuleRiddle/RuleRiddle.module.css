@@ -7,12 +7,3 @@
     margin-top: 8px;
     gap: 5px;
 }
-
-.reload_button{
-    padding:3px;
-    margin-left: auto;
-}
-.reload_button:hover{
-    cursor: pointer;
-    transform: scale(1.08);
-}

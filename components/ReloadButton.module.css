@@ -1,0 +1,20 @@
+.reload_button{
+    margin-left: auto;
+    padding:3px;
+    /* position: relative; */
+    display: grid;
+    grid-template-columns: auto 14px;
+}
+.reload_button:hover{
+    cursor: pointer;
+    transform: scale(1.08);
+}
+.reloads_left{
+    font-size: 14px;
+    font-weight: bold;
+    /* position: absolute;
+    right: 1px;
+    bottom: 1px; */
+    /* padding: 1px 2px 1px 2px; */
+    align-self: end;
+}
