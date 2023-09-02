@@ -3,37 +3,26 @@ import React, {useRef, useEffect} from 'react';
 import "./PasswordBox.css";
 
 
-// https://codepen.io/feketegy/pen/RwGBgyq
-function getCaret(el) {
-    let caretAt = 0;
-    const sel = window.getSelection();
-    
-    if(sel?.anchorNode?.parentElement?.id === "pswdbox"){
-        if ( sel.rangeCount == 0 ) { return caretAt; }
-    
-        const range = sel.getRangeAt(0);    
-        const preRange = range.cloneRange();
-        preRange.selectNodeContents(el);
-        preRange.setEnd(range.endContainer, range.endOffset);
-        caretAt = preRange.toString().length;
+// https://www.vishalon.net/blog/javascript-getting-and-setting-caret-position-in-textarea
+function getCaretPosition(el){
+    if(el.selectionStart || el.selectionStart == '0'){
+        return {
+            'start': el.selectionStart,
+            'end': el.selectionEnd
+        };
     }
-    return caretAt;   
+    else {
+        return {
+            'start': 0,
+            'end': 0
+        };
+    }
 }
 
-function setCaret(el, offset) {
-    let sel = window.getSelection();
-    if(sel?.anchorNode?.parentElement?.id === "pswdbox"){
-        let range = document.createRange();
-        
-        try{
-            range.setStart(el.childNodes[0], offset);
-            range.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(range);
-        }
-        catch(err){
-            console.log(err);
-        }
+function setCaretPosition(el, pos){
+    if (el && pos && el.setSelectionRange) {
+        // el.focus();
+        el.setSelectionRange(pos.start, pos.end);
     }
 }
 
@@ -41,14 +30,8 @@ function setCaret(el, offset) {
 
 function PasswordBox(props, ref) {
     const {pswd, setPswd} = props;
-    // const caretPos = useRef();
-
-    // useEffect(() => {
-    //     // setCaret(ref.current, caretPos.current);
-    //     // ref.current.focus();
-    // }, [pswd]);
-
-
+    const caretPos = useRef();
+    
     // https://saturncloud.io/blog/creating-a-textarea-with-autoresize/
     useEffect(() => {
         ref.current.style.height = 'auto';
@@ -57,10 +40,12 @@ function PasswordBox(props, ref) {
 
 
     function handleChange(e){
-        // caretPos.current = getCaret(ref.current);
-        // setPswd(e.currentTarget.textContent);
+        caretPos.current = getCaretPosition(ref.current);
         setPswd(e.target.value);
     }
+    useEffect(() => {
+        setCaretPosition(ref.current, caretPos.current);
+    }, [pswd]);
 
     return ( 
         <>
@@ -70,18 +55,6 @@ function PasswordBox(props, ref) {
                     {pswd.length}
                 </span>
             </div>
-            {/* <div 
-                id="pswdbox"
-                className="pswdbox" 
-                // contentEditable="plaintext-only"
-                contentEditable={true}
-                suppressContentEditableWarning={true}
-                spellCheck="false"
-                onInput={handleChange}
-                ref={ref}
-            >
-                {pswd}
-            </div> */}
             <textarea 
                 id="pswdbox"
                 className="pswdbox"
@@ -90,9 +63,9 @@ function PasswordBox(props, ref) {
                 onChange={handleChange} 
                 rows={1}
                 style={{resize: 'none', width: "100%", overflowY: 'hidden'}}
+                spellCheck="false"
             />
-            
-            
+            <div>{caretPos.current && `${caretPos.current.start}, ${caretPos.current.end}`}</div>
         </>
     );
 }
