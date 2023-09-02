@@ -1,6 +1,8 @@
-import Image from 'next/image';
+import { useRef } from 'react';
 import Rule from "../Rule";
 import styles from "./RuleRiddle.module.css";
+import ReloadButton from '../../components/ReloadButton';
+
 
 const riddles = [
     ["It's shorter than all the rest, when you're happy you raise it like it's the best.", "thumb"],
@@ -59,21 +61,22 @@ export default class RuleRiddle extends Rule{
 
 function Riddle({riddleNum, regenerate, correct}){
     const riddle = riddles[riddleNum][0];
-    const answer = riddles[riddleNum][1];
+    const reloadsLeft = useRef(3);
 
     return (
         <div className={styles.riddle_wrapper}>
             <div className={styles.riddle}>
                 {riddle}
             </div>
-            <Image 
-                width="24" 
-                height="24" 
-                src="/reload.png" 
-                alt="reload" 
-                onClick={regenerate} 
-                className={styles.reload_button}
-                hidden={correct}
+            <ReloadButton 
+                onClick={()=>{
+                    if(reloadsLeft.current>0){
+                        regenerate()
+                        reloadsLeft.current--; 
+                    }
+                }} 
+                hidden={correct} 
+                reloadsLeft={reloadsLeft.current}
             />
         </div>
     )

@@ -1,6 +1,7 @@
-import Image from 'next/image';
+import { useRef } from 'react';
 import styles from "./RuleLocation.module.css";
 import Rule from "../Rule";
+import ReloadButton from '../../components/ReloadButton';
 
 
 const locations = {
@@ -136,22 +137,22 @@ export default class RuleLocation extends Rule{
 function Location({locationName, regenerate, correct}){
     const latitude = locations[locationName][0];
     const longitude = locations[locationName][1];
-
-    
+    const reloadsLeft = useRef(3);    
 
     return (
         <div className={styles.location_wrapper}>
             <div className={styles.location}>
                 {latitude}, {longitude}
             </div>
-            <Image 
-                width="24" 
-                height="24" 
-                src="/reload.png" 
-                alt="reload" 
-                onClick={regenerate} 
-                className={styles.reload_button}
-                hidden={correct}
+            <ReloadButton 
+                onClick={()=>{
+                    if(reloadsLeft.current>0){
+                        regenerate()
+                        reloadsLeft.current--; 
+                    }
+                }} 
+                hidden={correct} 
+                reloadsLeft={reloadsLeft.current}
             />
         </div>
     )
