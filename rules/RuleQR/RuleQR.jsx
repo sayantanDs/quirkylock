@@ -6,15 +6,19 @@ async function getQR(word){
     
     //https://goqr.me/api/
     let url = `https://api.qrserver.com/v1/create-qr-code/?data=${word}!&size=100x100`;
-    url = 'https://corsproxy.io/?' + encodeURIComponent(url);   // CORS proxy
+    // url = 'https://corsproxy.io/?' + encodeURIComponent(url);   // CORS proxy
+    url = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);   // CORS proxy
 
     const options = {
         method: 'GET',
     };
 
     let response = await fetch(url, options);
-    const imageBlob = await response.blob()
-    const imageObjectURL = URL.createObjectURL(imageBlob);
+    response = await response.json();
+    // console.log("QR response:", response)
+    // const imageBlob = await response.blob()
+    // const imageObjectURL = URL.createObjectURL(imageBlob);
+    const imageObjectURL = response.contents;
     return imageObjectURL;
 }
 

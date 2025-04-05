@@ -8,7 +8,8 @@ async function get_todays_wordle(){
     let day = date.getDate();
 
     let url = `https://www.nytimes.com/svc/wordle/v2/${year}-${("0"+month).slice(-2)}-${("0"+day).slice(-2)}.json`;
-    url = 'https://corsproxy.io/?' + encodeURIComponent(url);   // CORS proxy
+    // url = 'https://corsproxy.io/?' + encodeURIComponent(url);   // CORS proxy
+    url = 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);   // CORS proxy
 
     const options = {
         method: 'GET',
@@ -16,6 +17,8 @@ async function get_todays_wordle(){
 
     let response = await fetch(url, options);
     let json = await response.json();
+    json = JSON.parse(json.contents);
+    console.log("WORDLE: ",json)
 
     return json.solution;
 }
@@ -28,7 +31,7 @@ export default class RuleWordle extends Rule{
         super("Your password must contain today's ");
 
         get_todays_wordle()
-            .then(solution => this.solution = solution)
+            .then(solution => {this.solution = solution})
             .catch((error) => {
                 console.log(error)
             });
