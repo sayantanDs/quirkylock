@@ -8,7 +8,7 @@ async function get_todays_wordle(){
     let day = date.getDate();
 
     let url = `https://www.nytimes.com/svc/wordle/v2/${year}-${("0"+month).slice(-2)}-${("0"+day).slice(-2)}.json`;
-    url = 'https://corsproxy.io/?' + encodeURIComponent(url);   // CORS proxy
+    url = 'https://corsproxy.io/?url=' + encodeURIComponent(url);   // CORS proxy
 
     const options = {
         method: 'GET',
